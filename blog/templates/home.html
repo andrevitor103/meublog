@@ -1,0 +1,36 @@
+  {% extends 'base.html' %}
+
+    {% block content %}
+    <div class="container shadow">
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-12 col-md-6 mt-5">
+
+        <!-- criar um "dindiar" -->
+
+        {% for postagem in postagens %}
+
+         <div class="card shadow mt-3">
+          <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'edicao_postagem' pk=postagem.pk %}">{{ postagem.titulo }}</a></h5>
+          <p class="card-text">{{ postagem.texto }}</p>
+          <div style="color: red; font-size: 12px; margin: 10px;">
+          <b> {{ postagem.data_publicacao }} </b>
+          <br>
+          <b> By {{ postagem.autor.username }} </b> 
+          <br>
+        </div>
+          <a href="{% url 'detalhe_post' pk=postagem.pk %}" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+
+      {% endfor %}
+    <!-- fim "dindiar" -->
+
+    <div class="col-3"></div>
+    </div>
+      </div>
+  
+  </div>
+
+{% endblock %}
